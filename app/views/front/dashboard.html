@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - Takalo-Takalo</title>
+    <link href="/pulbic/assets/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { min-height:100vh; background:#f8fafc; }
+      .app-nav { box-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+      .card-skel{ border-radius:12px; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white app-nav">
+      <div class="container">
+        <a class="navbar-brand" href="#">Takalo-Takalo</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="login.html">Se déconnecter</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-0">Mon espace</h4>
+        <div>
+          <a href="register.html" class="btn btn-outline-primary btn-sm">Nouvel utilisateur</a>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-skel p-3">
+            <h6>Mes objets</h6>
+            <p class="small text-muted">Gérez vos objets (titre, description, photos, prix estimatif)</p>
+            <div class="d-grid">
+              <a href="#" class="btn btn-primary">Gérer mes objets</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-skel p-3">
+            <h6>Objets des autres</h6>
+            <p class="small text-muted">Parcourir les objets publiés par les autres utilisateurs</p>
+            <div class="d-grid">
+              <a href="#" class="btn btn-outline-primary">Voir la liste</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-skel p-3">
+            <h6>Propositions d'échange</h6>
+            <p class="small text-muted">Consultez vos propositions reçues et envoyées</p>
+            <div class="d-grid">
+              <a href="#" class="btn btn-outline-secondary">Voir les échanges</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-5">
+      <footer class="text-center text-muted small">
+        Projet Takalo-Takalo — Remplacer par vos noms et numéros ETU<br>
+        Ex : Dupont Jean - ETU: 12345678
+      </footer>
+    </main>
+
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
