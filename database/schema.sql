@@ -1,25 +1,78 @@
-CREATE DATABASE IF NOT EXISTS messages CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE messages;
+-- ===============================
+-- CREATION BASE DE DONNEES
+-- ===============================
+CREATE DATABASE takalo;
+USE takalo;
 
-CREATE TABLE users (
+-- ===============================
+-- TABLE USERS
+-- ===============================
+CREATE TABLE takalo_users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50),
-    prenom VARCHAR(50),
-    email VARCHAR(100),
-    password_hash VARCHAR(255)
+    nom VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('user','admin') DEFAULT 'user',
+    date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE conversations (
+-- ===============================
+-- TABLE CATEGORIES
+-- ===============================
+CREATE TABLE takalo_categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user1_id INT NOT NULL,
-    user2_id INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    nom VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE messages (
+-- ===============================
+-- TABLE OBJETS
+-- ===============================
+CREATE TABLE takalo_objets (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    conversation_id INT NOT NULL,
-    sender_id INT NOT NULL,
-    message TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    id_user INT NOT NULL,
+    id_categorie INT NOT NULL,
+    titre VARCHAR(150) NOT NULL,
+    description TEXT,
+    prix_estimatif DECIMAL(10,2),
+    date_publication DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_user) REFERENCES takalo_users(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_categorie) REFERENCES takalo_categories(id) ON DELETE CASCADE
+);
+
+-- ===============================
+-- TABLE PHOTOS
+-- ===============================
+CREATE TABLE takalo_photos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_objet INT NOT NULL,
+    chemin VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_objet) REFERENCES takalo_objets(id) ON DELETE CASCADE
+);
+
+-- ===============================
+-- TABLE ECHANGES
+-- ===============================
+CREATE TABLE takalo_echanges (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_objet_propose INT NOT NULL,
+    id_objet_recu INT NOT NULL,
+    date_proposition DATETIME DEFAULT CURRENT_TIMESTAMP,
+    statut ENUM('en_attente','accepte','refuse') DEFAULT 'en_attente',
+    date_reponse DATETIME,
+    FOREIGN KEY (id_objet_propose) REFERENCES takalo_objets(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_objet_recu) REFERENCES takalo_objets(id) ON DELETE CASCADE
+);
+
+-- ===============================
+-- TABLE HISTORIQUE OBJET
+-- ===============================
+CREATE TABLE takalo_historique_objet (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_objet INT NOT NULL,
+    ancien_proprietaire INT NOT NULL,
+    nouveau_proprietaire INT NOT NULL,
+    date_echange DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_objet) REFERENCES takalo_objets(id) ON DELETE CASCADE,
+    FOREIGN KEY (ancien_proprietaire) REFERENCES takalo_users(id),
+    FOREIGN KEY (nouveau_proprietaire) REFERENCES takalo_users(id)
 );
