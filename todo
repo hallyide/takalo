@@ -44,10 +44,11 @@ CONNECTION
         - formulaire nom/email/password
         - design Bootstrap propre
 
-    Model
+    models[ok]
         User.php (getters/setters + constructeur)(Mariah)
 
-        UserDAO.php
+    repositories[ok]
+        UserRepository.php
             - createUser()
             - getUserByEmail()
             - getUserById()
