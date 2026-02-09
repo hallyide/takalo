@@ -1,0 +1,8 @@
+Comment on push
+git status
+git add .
+git commit -m "message du commit"
+git push
+
+Comment on pull
+git pull
