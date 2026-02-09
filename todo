@@ -1,11 +1,9 @@
 base.sql (Mariah)
 - créer base takalo
 - créer table users: - id
-                     - nom
+                     - identifiant
                      - email
                      - password
-                     - role (user/admin)
-                     - date_inscription
 
 - créer table categories: - id
                           - nom
@@ -38,55 +36,55 @@ base.sql (Mariah)
 - insérer données test
 
 CONNECTION
-login.php (Mira)
-- formulaire email/password
-- message erreur
+    login.php (Mira)
+        - formulaire email/password
+        - message erreur
 
-register.php (Mira)
-- formulaire nom/email/password
-- design Bootstrap propre
+    register.php (Mira)
+        - formulaire nom/email/password
+        - design Bootstrap propre
 
-Model
-User.php (getters/setters + constructeur)(Mariah)
+    Model
+        User.php (getters/setters + constructeur)(Mariah)
 
-UserDAO.php
-- createUser()
-- getUserByEmail()
-- getUserById()
-- countUsers() (statistique)
-- hash password
-- vérification login
+    UserDAO.php
+        - createUser()
+        - getUserByEmail()
+        - getUserById()
+        - countUsers() (statistique)
+        - hash password
+        - vérification login
 
 Controller
-UserController.php(Idealy)
-- showLogin()
-- login()
-- showRegister()
-- register()
-- logout()
+    UserController.php(Idealy)
+        - showLogin()
+        - login()
+        - showRegister()
+        - register()
+        - logout()
 
-Routes
-- GET /login
-- POST /login
-- GET /register
-- POST /register
-- GET /logout
-- gestion session
+    Routes
+        - GET /login
+        - POST /login
+        - GET /register
+        - POST /register
+        - GET /logout
+        - gestion session
 
 GESTION DES OBJETS (Utilisateur)
-objet_list.php (Mira)
-- liste objets utilisateur
-- bouton modifier
-- bouton supprimer
-- bouton ajouter
+    objet_list.php (Mira)
+        - liste objets utilisateur
+        - bouton modifier
+        - bouton supprimer
+        - bouton ajouter
 
-objet_create.php (Mira)
-- formulaire titre
-- description
-- catégorie (select)
-- prix
-- upload image
-
+    objet_create.php (Mira)
+        - formulaire titre
+        - description
+        - catégorie (select)
+        - prix
+        - upload image
+        
 objet_edit.php (Mira)
 
 Model
