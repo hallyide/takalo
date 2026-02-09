@@ -1,4 +1,4 @@
-base.sql (Mariah)
+base.sql (Mariah) [ok]
 - créer base takalo
 - créer table users: - id
                      - identifiant
@@ -33,7 +33,7 @@ base.sql (Mariah)
                                 - nouveau_proprietaire
                                 - date_echange
 
-- insérer données test
+- insérer données test [en cours]
 
 CONNECTION
     login.php (Mira)
@@ -47,13 +47,13 @@ CONNECTION
     Model
         User.php (getters/setters + constructeur)(Mariah)
 
-    UserDAO.php
-        - createUser()
-        - getUserByEmail()
-        - getUserById()
-        - countUsers() (statistique)
-        - hash password
-        - vérification login
+        UserDAO.php
+            - createUser()
+            - getUserByEmail()
+            - getUserById()
+            - countUsers() (statistique)
+            - hash password
+            - vérification login
 
 Controller
     UserController.php(Idealy)
