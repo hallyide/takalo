@@ -86,76 +86,49 @@ GESTION DES OBJETS (Utilisateur)
         - prix
         - upload image
         
-objet_edit.php (Mira)
+    objet_edit.php (Mira)
 
-Model
-Objet.php (Mariah)
+models(Mariah)
+    Objet.php 
 
-ObjetDAO.php (Mariah)
-- createObjet()
-- updateObjet()
+    ObjetRepository.php 
+        - createObjet()
+        - updateObjet()
+        - deleteObjet()
+        - getObjetByUser()
+        - getObjetById()
+        - getAllObjets()
+        - searchObjet()
 
-deleteObjet()
+    PhotoRepository.php
+        - addPhoto()
+        - getPhotosByObjet()
 
-getObjetByUser()
-
-getObjetById()
-
-getAllObjets()
-
-searchObjet()
-
-PhotoDAO.php
-
-addPhoto()
-
-getPhotosByObjet()
-
-🧩 Idealy
-Controller
-
-ObjetController.php
-
-listUserObjets()
-
-createObjet()
-
-storeObjet()
-
-editObjet()
-
-updateObjet()
-
-deleteObjet()
-
-listAllObjets()
+Controller (Idealy)
+    ObjetController.php
+        - listUserObjets()
+        - createObjet()
+        - storeObjet()
+        - editObjet()
+        - updateObjet()
+        - deleteObjet()
+        - listAllObjets()
 
 Routes
+    GET /mes-objets
+    GET /objet/create
+    POST /objet/store
+    GET /objet/edit/@id
+    POST /objet/update
+    GET /objet/delete/@id
+    GET /objets
 
-GET /mes-objets
-
-GET /objet/create
-
-POST /objet/store
-
-GET /objet/edit/@id
-
-POST /objet/update
-
-GET /objet/delete/@id
-
-GET /objets
-
-🔎 PAGE LISTE OBJETS (Public)
-🎨 Mira
-
-objets_public.php
-
-grille Bootstrap
-
-barre de recherche
-
-filtre catégorie (select)
+PAGE LISTE OBJETS (Public)
+views(Mira)
+    objets_public.php
+        - grille Bootstrap
+        - barre de recherche
+        - filtre catégorie (select)
 
 ⚙️ Mariah
 
