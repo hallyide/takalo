@@ -1,0 +1,338 @@
+base.sql (Mariah)
+- créer base takalo
+- créer table users: - id
+                     - nom
+                     - email
+                     - password
+                     - role (user/admin)
+                     - date_inscription
+
+- créer table categories: - id
+                          - nom
+
+- créer table objets: - id
+                      - id_user
+                      - id_categorie
+                      - titre
+                      - description
+                      - prix_estimatif
+                      - date_publication
+
+- créer table photos: - id
+                      - id_objet
+                      - chemin
+
+- créer table echanges: - id
+                        - id_objet_propose
+                        - id_objet_recu
+                        - date_proposition
+                        - statut (en_attente, accepté, refusé)
+                        - date_reponse
+
+- créer table historique_objet: - id
+                                - id_objet
+                                - ancien_proprietaire
+                                - nouveau_proprietaire
+                                - date_echange
+
+- insérer données test
+
+CONNECTION
+login.php (Mira)
+- formulaire email/password
+- message erreur
+
+register.php (Mira)
+- formulaire nom/email/password
+- design Bootstrap propre
+
+Model
+User.php (getters/setters + constructeur)(Mariah)
+
+UserDAO.php
+- createUser()
+- getUserByEmail()
+- getUserById()
+- countUsers() (statistique)
+- hash password
+- vérification login
+
+Controller
+UserController.php(Idealy)
+- showLogin()
+- login()
+- showRegister()
+- register()
+- logout()
+
+Routes
+- GET /login
+- POST /login
+- GET /register
+- POST /register
+- GET /logout
+- gestion session
+
+GESTION DES OBJETS (Utilisateur)
+objet_list.php (Mira)
+- liste objets utilisateur
+- bouton modifier
+- bouton supprimer
+- bouton ajouter
+
+objet_create.php (Mira)
+- formulaire titre
+- description
+- catégorie (select)
+- prix
+- upload image
+
+objet_edit.php (Mira)
+
+Model
+Objet.php (Mariah)
+
+ObjetDAO.php (Mariah)
+- createObjet()
+- updateObjet()
+
+deleteObjet()
+
+getObjetByUser()
+
+getObjetById()
+
+getAllObjets()
+
+searchObjet()
+
+PhotoDAO.php
+
+addPhoto()
+
+getPhotosByObjet()
+
+🧩 Idealy
+Controller
+
+ObjetController.php
+
+listUserObjets()
+
+createObjet()
+
+storeObjet()
+
+editObjet()
+
+updateObjet()
+
+deleteObjet()
+
+listAllObjets()
+
+Routes
+
+GET /mes-objets
+
+GET /objet/create
+
+POST /objet/store
+
+GET /objet/edit/@id
+
+POST /objet/update
+
+GET /objet/delete/@id
+
+GET /objets
+
+🔎 PAGE LISTE OBJETS (Public)
+🎨 Mira
+
+objets_public.php
+
+grille Bootstrap
+
+barre de recherche
+
+filtre catégorie (select)
+
+⚙️ Mariah
+
+searchObjet($titre, $categorie)
+
+getAllCategories()
+
+🧩 Idealy
+
+route GET /objets
+
+récupérer paramètres GET
+
+passer résultats à la vue
+
+📄 FICHE OBJET
+🎨 Mira
+
+objet_detail.php
+
+images
+
+description
+
+prix
+
+bouton "Proposer échange"
+
+⚙️ Mariah
+
+getObjetDetails()
+
+getUserObjets() (pour proposer échange)
+
+🧩 Idealy
+
+GET /objet/@id
+
+afficher bouton seulement si utilisateur connecté
+
+🔁 PROPOSITION D’ÉCHANGE
+🎨 Mira
+
+echange_form.php
+
+liste déroulante de nos objets
+
+bouton proposer
+
+⚙️ Mariah
+Model
+
+Echange.php
+
+EchangeDAO.php
+
+createEchange()
+
+getEchangeByUser()
+
+acceptEchange()
+
+refuseEchange()
+
+countEchanges()
+
+mise à jour propriétaire si accepté
+
+insertion historique_objet
+
+🧩 Idealy
+Controller
+
+EchangeController.php
+
+proposer()
+
+listEchanges()
+
+accepter()
+
+refuser()
+
+Routes
+
+POST /echange/proposer
+
+GET /mes-echanges
+
+GET /echange/accepter/@id
+
+GET /echange/refuser/@id
+
+📜 HISTORIQUE OBJET (Public)
+🎨 Mira
+
+historique.php
+
+tableau :
+
+ancien propriétaire
+
+nouveau propriétaire
+
+date
+
+⚙️ Mariah
+
+getHistoriqueByObjet()
+
+🧩 Idealy
+
+GET /objet/@id/historique
+
+🛠 BACKOFFICE ADMIN
+📌 Login Admin
+🎨 Mira
+
+admin_login.php
+
+login prérempli
+
+⚙️ Mariah
+
+vérification role = admin
+
+🧩 Idealy
+
+route admin sécurisée
+
+📌 Gestion catégories
+🎨 Mira
+
+categorie_list.php
+
+categorie_create.php
+
+⚙️ Mariah
+
+Categorie.php
+
+CategorieDAO.php
+
+create
+
+update
+
+delete
+
+getAll
+
+🧩 Idealy
+
+CategorieController.php
+
+routes admin
+
+📊 STATISTIQUES ADMIN
+🎨 Mira
+
+stats.php
+
+afficher :
+
+nombre utilisateurs
+
+nombre échanges effectués
+
+⚙️ Mariah
+
+countUsers()
+
+countEchanges()
+
+🧩 Idealy
+
+GET /admin/stats
+
+vérifier session admin
